@@ -2,12 +2,13 @@ import React, { useState } from "react";
 
 function App() {
   const [sum, setSum] = useState(0);
+  const [inputValue, setInputValue] = useState("");
 
-  const handleChange = (e) => {
-    const num = parseInt(e.target.value);
+  const handleAdd = () => {
+    const num = parseInt(inputValue);
     if (!isNaN(num)) {
-      setSum(prevSum => prevSum + num);
-      e.target.value = "";
+      setSum(prev => prev + num);
+      setInputValue(""); 
     }
   };
 
@@ -16,12 +17,14 @@ function App() {
       <h1>Sum Calculator</h1>
       <input
         type="number"
-        placeholder="Enter a number"
-        onChange={handleChange}
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
       />
+      <button onClick={handleAdd}>Add</button>
       <p>Sum: {sum}</p>
     </div>
   );
 }
 
 export default App;
+
