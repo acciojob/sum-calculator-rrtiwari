@@ -30,27 +30,23 @@ function App() {
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "300px", margin: "auto" }}>
-      <h2>Sum Calculator</h2>
+    <div>
+      <h1>Sum Calculator</h1>
+
       <input
         type="number"
         value={inputValue}
         onChange={handleInputChange}
         onKeyPress={handleKeyPress}
         placeholder="Enter a number"
-        style={{ padding: "5px", width: "100%", marginBottom: "10px" }}
       />
-      <button onClick={handleAddNumber} style={{ padding: "5px 10px" }}>
-        Add Number
-      </button>
-      <div style={{ marginTop: "20px" }}>
-        <strong>Numbers:</strong> {numbers.join(", ")}
-      </div>
-      <div style={{ marginTop: "10px", fontSize: "18px" }}>
-        <strong>Sum:</strong> {sum}
-      </div>
+      <button onClick={handleAddNumber}>Add Number</button>
+
+      <p>Numbers: {numbers.join(", ")}</p>
+      <p>Sum: {sum}</p>
     </div>
   );
 }
 
 export default App;
+
