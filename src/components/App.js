@@ -5,26 +5,20 @@ function App() {
   const [sum, setSum] = useState(0);
   const [inputValue, setInputValue] = useState("");
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
-
-  const handleAddNumber = () => {
-    const number = parseInt(inputValue);
-    if (!isNaN(number)) {
-      setNumbers([...numbers, number]);
-      setInputValue("");
-    }
-  };
-
   useEffect(() => {
     const total = numbers.reduce((acc, curr) => acc + curr, 0);
     setSum(total);
   }, [numbers]);
 
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      handleAddNumber();
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setInputValue(value);
+
+    const number = parseInt(value);
+    if (!isNaN(number)) {
+      setNumbers([number]);
+    } else {
+      setNumbers([]);
     }
   };
 
@@ -35,10 +29,8 @@ function App() {
         type="number"
         value={inputValue}
         onChange={handleInputChange}
-        onKeyPress={handleKeyPress}
         placeholder="Enter a number"
       />
-      <button onClick={handleAddNumber}>Add Number</button>
       <p>Sum: {sum}</p>
     </div>
   );
