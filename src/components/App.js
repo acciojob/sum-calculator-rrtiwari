@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 
 function App() {
@@ -32,7 +31,6 @@ function App() {
   return (
     <div>
       <h1>Sum Calculator</h1>
-
       <input
         type="number"
         value={inputValue}
@@ -41,12 +39,9 @@ function App() {
         placeholder="Enter a number"
       />
       <button onClick={handleAddNumber}>Add Number</button>
-
-      <p>Numbers: {numbers.join(", ")}</p>
       <p>Sum: {sum}</p>
     </div>
   );
 }
 
 export default App;
-
