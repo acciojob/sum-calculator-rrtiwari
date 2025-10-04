@@ -1,21 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 function App() {
-  const [numbers, setNumbers] = useState([]);
   const [sum, setSum] = useState(0);
-  const [inputValue, setInputValue] = useState("");
 
-  useEffect(() => {
-    const total = numbers.reduce((acc, curr) => acc + curr, 0);
-    setSum(total);
-  }, [numbers]);
-
-  const handleInputChange = (e) => {
-    const value = e.target.value;
-    setInputValue(value);
-    const number = parseInt(value);
-    if (!isNaN(number)) {
-      setNumbers((prev) => [...prev, number]);
+  const handleChange = (e) => {
+    const num = parseInt(e.target.value);
+    if (!isNaN(num)) {
+      setSum(prevSum => prevSum + num);
+      e.target.value = "";
     }
   };
 
@@ -24,9 +16,8 @@ function App() {
       <h1>Sum Calculator</h1>
       <input
         type="number"
-        value={inputValue}
-        onChange={handleInputChange}
         placeholder="Enter a number"
+        onChange={handleChange}
       />
       <p>Sum: {sum}</p>
     </div>
