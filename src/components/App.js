@@ -13,12 +13,9 @@ function App() {
   const handleInputChange = (e) => {
     const value = e.target.value;
     setInputValue(value);
-
     const number = parseInt(value);
     if (!isNaN(number)) {
-      setNumbers([number]);
-    } else {
-      setNumbers([]);
+      setNumbers((prev) => [...prev, number]);
     }
   };
 
